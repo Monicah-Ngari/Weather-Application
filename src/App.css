@@ -1,0 +1,32 @@
+.App {
+  text-align: center;
+}
+
+.Weather {
+  font-family: arial, sans-serif;
+  border: 1px solid #dadde1;
+  padding: 16px;
+  border-radius: 4px;
+  color: rgb(135, 135, 135);
+}
+
+.Weather h1 {
+  color: #878787;
+  font-size: 40px;
+  font-weight: 100;
+  margin: 20px 0 0 0;
+  line-height: 29px;
+}
+
+.Weather ul {
+  margin: 0;
+  padding: 0;
+  color: black;
+}
+
+.Weather li {
+  font-size: 20px;
+  font-weight: 100;
+  line-height: 19px;
+  list-style: none;
+}
