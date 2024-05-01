@@ -22,6 +22,20 @@ export default function Weather() {
 
   return (
     <div className="Weather container mt-5">
+      <form onSubmit={search}>
+        <input
+          type="search"
+          placeholder="Enter City"
+          className="w-50 "
+          autoFocus="on"
+          onChange={handleCityChange}
+        ></input>
+        <input
+          type="submit"
+          placeholder="Search"
+          className=" btn col-3  btn-primary"
+        ></input>
+      </form>
       {weatherData && (
         <div className="mb-5 weather-app ">
           <div className=" city-decsription">
@@ -61,23 +75,7 @@ export default function Weather() {
         </div>
       )}
       <div className=" mb-5 weather-details">
-        <div>
-          PREDICTION ICONS
-          <form className="w-70" onSubmit={search}>
-            <input
-              type="search"
-              placeholder="Enter City"
-              className=" col-9 "
-              autoFocus="on"
-              onChange={handleCityChange}
-            ></input>
-            <input
-              type="submit"
-              placeholder="Search"
-              className=" btn col-3  btn-primary"
-            ></input>
-          </form>
-        </div>
+        <div>PREDICTION ICONS</div>
       </div>
     </div>
   );
