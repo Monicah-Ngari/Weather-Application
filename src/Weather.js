@@ -3,62 +3,45 @@ import axios from "axios";
 
 export default function Weather() {
   const [city, setCity] = useState();
-  const [weatherData, setWeatherData] = useState({ ready: false });
-  function handleResponse(response) {
-    const newData = {
-      coordinates: response.data.coordinates,
-      temperature: response.data.temperature.humidity.current,
-      humidity: response.data.temperature.humidity,
-      date: new Date(response.data.time * 1000),
-      description: response.data.condition.description,
-      icon: response.data.condition.icon_url,
-      wind: response.data.wind.speed,
-      city: response.data.city,
-    };
-
-    setWeatherData(newData);
-
-    console.log(response.data);
-  }
+  const [weatherData, setWeatherData] = useState(null);
 
   function handleCityChange(event) {
     setCity(event.target.value);
   }
 
-  function search() {
+  function search(e) {
+    e.preventDefault();
     let apiKey = "1a2a473db97faf41f0088oe8t98271ff";
     let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
-    axios.get(url).then(handleResponse);
+    axios.get(url).then(function (response) {
+      return setWeatherData(response.data);
+      console.log(response.data);
+    });
   }
 
-  if (weatherData.ready) {
-    return (
-      <div className="Weather container mt-5">
+  return (
+    <div className="Weather container mt-5">
+      {weatherData && (
         <div className="row mb-5 weather-app ">
           <div className="col-6 city-decsription">
             <h1>Nairobi</h1>
             <p>
-              <strong>Teusday </strong>
-            </p>
-            <p>
-              <strong> 20 Jun 2002</strong>
+              <strong> {weatherData.date}</strong>
             </p>
           </div>
           <div className="col-6 weather-description">
             <ul>
               <li>
                 {" "}
-                <strong> {weatherData.humidity}%</strong>
+                <strong> {weatherData.temperature.humidity}%</strong>
               </li>
               <li>
                 {" "}
-                <strong>{weatherData.wind}km/h</strong>
+                <strong>{weatherData.wind.speed}km/h</strong>
               </li>
             </ul>
           </div>
-        </div>
-        <div className="row mb-5 weather-details">
           <div className="col-6">
             <span>
               <img
@@ -66,32 +49,31 @@ export default function Weather() {
                 alt="icon"
               />
             </span>
-            <span className="temp">{weatherData.temperature}</span>
+            <span className="temp">{weatherData.temperature.current}</span>
             <span className="units">° C</span>
             <p>{weatherData.description}</p>
           </div>
-          <div className="col-6">
-            PREDICTION ICONS
-            <form>
-              <input
-                type="search"
-                placeholder="Enter City"
-                className=" col-9 "
-                autoFocus="on"
-                onChange={handleCityChange}
-              ></input>
-              <input
-                type="submit"
-                placeholder="Search"
-                className=" btn col-3  btn-primary"
-              ></input>
-            </form>
-          </div>
+        </div>
+      )}
+      <div className="row mb-5 weather-details">
+        <div className="col-6">
+          PREDICTION ICONS
+          <form onSubmit={search}>
+            <input
+              type="search"
+              placeholder="Enter City"
+              className=" col-9 "
+              autoFocus="on"
+              onChange={handleCityChange}
+            ></input>
+            <input
+              type="submit"
+              placeholder="Search"
+              className=" btn col-3  btn-primary"
+            ></input>
+          </form>
         </div>
       </div>
-    );
-  } else {
-    search();
-    return "Loading...";
-  }
+    </div>
+  );
 }
