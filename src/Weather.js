@@ -2,13 +2,15 @@ import React from "react";
 import axios from "axios";
 
 export default function Weather() {
-  function handleRespone(response) {
+  function handleResponse(response) {
     return console.log(response.data);
   }
-  let apikey = "597c40c39084687093b091cd48b366f8";
+
+  let apiKey = "597c40c39084687093b091cd48b366f8";
   let city = "Nairobi";
-  let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apikey}&units=metric`;
-  axios.get(url).then(handleRespone);
+  let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+
+  axios.get(url).then(handleResponse);
 
   return (
     <div className="Weather container mt-5">
