@@ -6,7 +6,7 @@ export default function Weather() {
     return console.log(response.data);
   }
 
-  let apiKey = "597c40c39084687093b091cd48b366f8";
+  let apiKey = "1a2a473db97faf41f0088oe8t98271ff";
   let city = "Nairobi";
   let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
