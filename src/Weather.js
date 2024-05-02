@@ -1,23 +1,38 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function Weather() {
-  const [city, setCity] = useState();
+  const [city, setCity] = useState("Nairobi");
   const [weatherData, setWeatherData] = useState(null);
+
+
+  useEffect(() => {
+    fetchWeatherData(city);
+  }, []
+  );
 
   function handleCityChange(event) {
     setCity(event.target.value);
   }
 
-  function search(e) {
-    e.preventDefault();
+  function fetchWeatherData(city) {
     let apiKey = "1a2a473db97faf41f0088oe8t98271ff";
     let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
-    axios.get(url).then(function (response) {
-      return setWeatherData(response.data);
-      console.log(response.data);
-    });
+    axios.get(url)
+      .then(function (response) {
+        console.log("Response data:", response.data);
+        setWeatherData(response.data);
+      })
+      .catch(function (error) {
+        console.error("Error fetching weather data:", error);
+      });
+  }
+
+
+  function search(e) {
+    e.preventDefault();
+    fetchWeatherData(city);
   }
 
   return (
@@ -39,7 +54,7 @@ export default function Weather() {
       {weatherData && (
         <div className="mb-5 weather-app ">
           <div className=" city-decsription">
-            <h1>Nairobi</h1>
+            <h1>{weatherData.city}</h1>
             <p>
               <strong> {weatherData.date}</strong>
             </p>
