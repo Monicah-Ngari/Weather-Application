@@ -1,23 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function Weather() {
-  const [city, setCity] = useState();
+  const [city, setCity] = useState("Nairobi");
   const [weatherData, setWeatherData] = useState(null);
+
+  useEffect(() => {
+    fetchWeatherData(city);
+  }, []);
 
   function handleCityChange(event) {
     setCity(event.target.value);
   }
 
-  function search(e) {
-    e.preventDefault();
+  function fetchWeatherData(city) {
     let apiKey = "1a2a473db97faf41f0088oe8t98271ff";
     let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
-    axios.get(url).then(function (response) {
-      return setWeatherData(response.data);
-      console.log(response.data);
-    });
+    axios
+      .get(url)
+      .then(function (response) {
+        console.log("Response data:", response.data);
+        setWeatherData(response.data);
+      })
+      .catch(function (error) {
+        console.error("Error fetching weather data:", error);
+      });
+  }
+
+  function search(e) {
+    e.preventDefault();
+    fetchWeatherData(city);
   }
 
   return (
@@ -26,20 +39,25 @@ export default function Weather() {
         <input
           type="search"
           placeholder="Enter City"
-          className="w-50 "
+          className=" "
           autoFocus="on"
           onChange={handleCityChange}
         ></input>
+
         <input
           type="submit"
-          placeholder="Search"
-          className=" btn col-3  btn-primary"
+          value="Search"
+          className="btn col-3 btn-primary"
         ></input>
       </form>
       {weatherData && (
         <div className="mb-5 weather-app ">
           <div className=" city-decsription">
-            <h1>Nairobi</h1>
+            <h1>{weatherData.city}</h1>
+            <ul className="weatherDay">
+              <li>{new Date(weatherData.time * 1000).toLocaleDateString()}</li>
+              <li> Mostly cloudy</li>
+            </ul>
             <p>
               <strong> {weatherData.date}</strong>
             </p>
