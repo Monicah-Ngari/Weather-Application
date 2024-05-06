@@ -8,19 +8,27 @@ export default function App() {
       <Weather />
       <footer className="card-text text-center">
         This project was coded by{" "}
-        <a href="" target="blank" rel="">
+        <a
+          href="https://github.com/Monicah-Ngari/Weather-Application"
+          target="blank"
+          rel="github"
+        >
           Monicah Ngari
         </a>{" "}
         and is{" "}
         <a
           href="https://github.com/Monicah-Ngari/Weather-Application"
           target="-blank"
-          rel=""
+          rel="netlify"
         >
           open-sourced on GitHub
         </a>{" "}
         and{" "}
-        <a href="" target="blank" rel="">
+        <a
+          href="https://github.com/Monicah-Ngari/Weather-Application"
+          target="blank"
+          rel="project"
+        >
           hosted on Netlify
         </a>
       </footer>

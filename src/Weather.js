@@ -9,7 +9,7 @@ export default function Weather() {
 
   useEffect(() => {
     fetchWeatherData(city);
-  }, []);
+  }, [setCity]);
 
   function handleCityChange(event) {
     setCity(event.target.value);
