@@ -1,6 +1,7 @@
 import React from "react";
 
 import Weather from "./Weather";
+import "./App.css";
 
 export default function App() {
   return (
@@ -8,11 +9,7 @@ export default function App() {
       <Weather />
       <footer className="card-text text-center">
         This project was coded by{" "}
-        <a
-          href="https://github.com/Monicah-Ngari/Weather-Application"
-          target="blank"
-          rel="github"
-        >
+        <a href="https://github.com/Monicah-Ngari" target="blank" rel="github">
           Monicah Ngari
         </a>{" "}
         and is{" "}
@@ -25,7 +22,7 @@ export default function App() {
         </a>{" "}
         and{" "}
         <a
-          href="https://github.com/Monicah-Ngari/Weather-Application"
+          href="https://dapper-bavarois-9b6fea.netlify.app/"
           target="blank"
           rel="project"
         >

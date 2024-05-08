@@ -1,0 +1,91 @@
+.Weather {
+    border: 2px solid #dadde1;
+    padding: 20px;
+    border-radius: 4px;
+    color: #333;
+    background-color: #f7f7f7;
+}
+
+.Weather form {
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.Weather form input[type="search"] {
+    flex: 3;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.Weather form input[type="submit"] {
+    flex: 1;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.Weather .weather-app {
+    display: flex;
+    align-items: center;
+}
+
+.city-description {
+    flex: 2;
+}
+
+.city-description h1 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.weatherDay {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    color: #777;
+}
+
+.weatherDay li {
+    font-size: 16px;
+}
+
+.weather-description {
+    flex: 1;
+    text-align: right;
+}
+
+.weather-description ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.weather-description li {
+    font-size: 16px;
+}
+
+img {
+    height: 50px;
+    width: auto;
+}
+
+.temp {
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.units {
+    font-size: 24px;
+    vertical-align: top;
+    margin-left: 5px;
+}
+
+.weather-details {
+    text-align: center;
+    font-size: 18px;
+}

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Day from "./Day";
-import "./App.css";
+import "./Weather.css";
+import WeatherTemp from "./WeatherTemp";
 
 export default function Weather() {
   const [city, setCity] = useState("Nairobi");
@@ -88,10 +89,9 @@ export default function Weather() {
           </div>
           <div className="">
             <img src={weatherData.condition.icon_url} alt="Weather Icon" />
-            <span className="temp">
-              {Math.round(weatherData.temperature.current)}
-            </span>
-            <span className="units">° C</span>
+
+            <WeatherTemp celcius={weatherData.temperature} />
+
             <p>{weatherData.description}</p>
           </div>
         </div>
