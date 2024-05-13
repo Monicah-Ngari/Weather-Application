@@ -89,3 +89,10 @@ img {
     text-align: center;
     font-size: 18px;
 }
+
+.link {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+
+}

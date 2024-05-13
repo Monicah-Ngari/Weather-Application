@@ -90,7 +90,7 @@ export default function Weather() {
           <div className="">
             <img src={weatherData.condition.icon_url} alt="Weather Icon" />
 
-            <WeatherTemp celcius={weatherData.temperature} />
+            <WeatherTemp celsius={weatherData.temperature.value} />
 
             <p>{weatherData.description}</p>
           </div>
